@@ -1,0 +1,11 @@
+{
+    "/app":{
+        "target":"http://127.0.0.1:9002/",
+        "logLevel":"debug",
+        "secure":false,
+        "changeOrigin":true,
+        "pathRewrite":{
+            "^/app":""
+        }
+    }
+}
