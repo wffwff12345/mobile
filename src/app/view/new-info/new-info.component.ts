@@ -24,6 +24,7 @@ export class NewInfoComponent implements OnInit {
   icon_name='#icon-aixin';
   state:any;
   isvisible=false;
+  show=false;
   ngOnInit(): void {
     this.service.get(this.id).subscribe((res:any)=>{
       this.title=res.data.title;
@@ -50,11 +51,13 @@ export class NewInfoComponent implements OnInit {
   }
   showModal(){
     this.isvisible=true;
+    this.show=true;
   }
   async close(){
     console.log(this.text);
     this.text=null;
     this.isvisible=false;
+    this.show=false;
   }
   footer = [
     {
