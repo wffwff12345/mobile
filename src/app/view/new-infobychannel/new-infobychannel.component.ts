@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NewsService } from './news.service';
-import { ToastService } from 'ng-zorro-antd-mobile';
 import { Router } from '@angular/router';
 import { store } from 'src/app/store/store.component';
 import { ThisReceiver } from '@angular/compiler';
+import { ActionSheetService, ToastService } from 'ng-zorro-antd-mobile';
+import { en_US, ru_RU, zh_CN, sv_SE, da_DK } from 'ng-zorro-antd-mobile';
 @Component({
   selector: 'app-new-infobychannel',
   templateUrl: './new-infobychannel.component.html',
   styleUrls: ['./new-infobychannel.component.css']
 })
 export class NewInfobychannelComponent implements OnInit {
-  constructor(private route:ActivatedRoute,private service:NewsService,private Toast:ToastService,private router:Router) { }
+  constructor(private route:ActivatedRoute,private service:NewsService,private Toast:ToastService,private router:Router,public changeDetectorRef:ChangeDetectorRef,private _actionSheet: ActionSheetService, private _toast: ToastService) { 
+  }  
   id=this.route.snapshot.params['id'];
   title:string|null=null;
   contents:content[]=[];
@@ -65,7 +67,30 @@ export class NewInfobychannelComponent implements OnInit {
       }
     }
   ];
+  dataList = [
+    { url: 'OpHiXAcYzmPQHcdlLFrc', title: '发送给朋友' },
+    { url: 'wvEzCMiDZjthhAOcwTOu', title: '新浪微博' },
+    { url: 'cTTayShKtEIdQVEMuiWt', title: '生活圈' },
+    { url: 'umnHwvEgSyQtXlZjNJTt', title: '微信好友' },
+    { url: 'SxpunpETIwdxNjcJamwB', title: 'QQ' }
+  ].map(obj => ({
+    icon: `<img src="https://gw.alipayobjects.com/zos/rmsportal/${obj.url}.png" style="width:36px"/>`,
+    title: obj.title
+  }));
 
+  showShareActionSheetMulpitleLine = () => {
+    const data = [[...this.dataList, this.dataList[2]], [this.dataList[3], this.dataList[4]]];
+    this._actionSheet.showShareActionSheetWithOptions(
+      {
+        options: data,
+        message: '请选择转发方式',
+
+      },
+      (buttonIndex, rowIndex) => {
+        console.log(buttonIndex);
+      }
+    );
+  }
 }
   interface content{
     type:string;

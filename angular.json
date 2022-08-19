@@ -20,6 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies":[ "redux-persist"],
             "outputPath": "dist/mobile",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -66,6 +67,7 @@
               "namedChunks": true
             }
           },
+          
           "defaultConfiguration": "production"
         },
         "serve": {

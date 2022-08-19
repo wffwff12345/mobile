@@ -83,47 +83,12 @@ export class NewInfoComponent implements OnInit {
     title: obj.title
   }));
 
-
-  showActionSheet = (message: any) => {
-    const BUTTONS = ['Operation1', 'Operation2', 'Operation2', 'Delete', '关闭'];
-    this._actionSheet.showActionSheetWithOptions(
-      {
-        options: BUTTONS,
-        cancelButtonIndex: BUTTONS.length - 1,
-        destructiveButtonIndex: BUTTONS.length - 2,
-        title: 'title',
-        message: message,
-        maskClosable: true
-      },
-      buttonIndex => {
-        console.log(buttonIndex);
-      }
-    );
-  }
-
-  showShareActionSheet = () => {
-    this._actionSheet.showShareActionSheetWithOptions(
-      {
-        options: this.dataList,
-        message: '请选择转发方式',
-        locale: zh_CN
-      },
-      buttonIndex => {
-        return new Promise(resolve => {
-          this._toast.info('closed after 1000ms');
-          setTimeout(resolve, 1000);
-        });
-      }
-    );
-  }
-
   showShareActionSheetMulpitleLine = () => {
-    const data = [[...this.dataList, this.dataList[2]], [this.dataList[3], this.dataList[4]]];
+    const data = [[...this.dataList], [this.dataList[3], this.dataList[4]]];
     this._actionSheet.showShareActionSheetWithOptions(
       {
         options: data,
         message: '请选择转发方式',
-        locale: en_US
       },
       (buttonIndex, rowIndex) => {
         console.log(buttonIndex);
