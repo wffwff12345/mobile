@@ -38,18 +38,19 @@
     <ng-template #message>
         <div class="am-action-sheet-message">123</div>
     </ng-template>
-    <Modal [(ngModel)]="isvisible"   [closable]="true" (onClose)="close()" [transparent]="true" [title]="'善言结善缘,恶言伤人心'"
+    <Modal  [(ngModel)]="isvisible"   [closable]="true" (onClose)="close()" [transparent]="true" [title]="'善言结善缘,恶言伤人心'"
         [footer]="footer">
-        <div [ngStyle]="{ height: 100, overflow: 'scroll' }">
-            <div class="am-list" style="margin:0;">
+        <div  [ngStyle]="{ height: 100, overflow: 'scroll' }">
+            <div  class="am-list" style="margin:0;">
                 <div class="am-list-body">
-                    <TextareaItem *ngIf="show" [clear]="true" [(ngModel)]="text"  [rows]="5" [count]="100" placeholder="请留言...">
+                    <TextareaItem *ngIf="show"  [clear]="true" [(ngModel)]="text"  [rows]="5" [count]="100" placeholder="请留言...">
                     </TextareaItem>
                 </div>
             </div>
         </div>
     </Modal>
-</div>
+    </div>
+
 <!-- <svg class="icon" aria-hidden="true">
     <use [attr.xlink:href]="icon_name"></use>
 </svg> -->

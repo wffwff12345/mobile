@@ -13,7 +13,7 @@
             </div>
             <div class="focus">
                 <nzm-button [type]="'primary'"
-                    style="width: 80px;height:47px;margin:0px 0px 0px 170px ;border-radius: 30px;border: 0px;padding-top: 0px;text-align: center;vertical-align: middle;">
+                    style="width: 80px;height:47px;margin:0px 0px 0px 170px ;border-radius: 30px;border: 0px;padding-top: 0px;text-align: center;vertical-align: middle;opacity:0.4">
                     <span style="font-size:16px ;">关注</span>
                 </nzm-button>
             </div>
@@ -44,7 +44,7 @@
         <div [ngStyle]="{ height: 100, overflow: 'scroll' }">
             <div class="am-list" style="margin:0;">
                 <div class="am-list-body">
-                    <TextareaItem [clear]="true" [(ngModel)]="text" [rows]="5" [count]="100" placeholder="请留言...">
+                    <TextareaItem *ngIf="show" [clear]="true" [(ngModel)]="text" [rows]="5" [count]="100" placeholder="请留言...">
                     </TextareaItem>
                 </div>
             </div>

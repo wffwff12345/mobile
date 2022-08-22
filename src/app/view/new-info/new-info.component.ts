@@ -53,11 +53,14 @@ export class NewInfoComponent implements OnInit {
     this.isvisible=true;
     this.show=true;
   }
-  async close(){
+  close(){
     console.log(this.text);
     this.text=null;
     this.isvisible=false;
-    this.show=false;
+    setTimeout(()=>{
+      this.show=false;
+    },200);
+   
   }
   footer = [
     {
