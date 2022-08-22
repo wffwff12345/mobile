@@ -3,7 +3,7 @@ import { ToastService } from 'ng-zorro-antd-mobile';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
 import { store } from 'src/app/store/store.component';
-import { setTokened } from 'src/app/store/reducers.component';
+import { setTokened,setName } from 'src/app/store/reducers.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -27,7 +27,8 @@ export class LoginComponent implements OnInit {
     this.service.login(dto).subscribe((res:any)=>{
       console.log(res);
       if(res.code==1006){
-        const token=store.dispatch(setTokened(res.data.token));
+        store.dispatch(setTokened(res.data.token));
+        store.dispatch(setName(res.data.user.name));
         this.router.navigate(['/tabbar/news']);
         this.Toast.success(res.message);
       }else{

@@ -4,9 +4,9 @@
 [barTintColor]="'rgb(220, 241, 170)'"
 [tintColor]="tintColor"
 [ngStyle]="tabbarStyle"
-[activeTab]="selectedIndex"
 [unselectedTintColor]="unselectedTintColor"
 [tabBarPosition]="'bottom'"
+[activeTab]="selectedIndex"
 (onPress)="tabBarTabOnPress($event)"
 >
 <TabBarItem [title]="'news'" [key]="'1'" [badge]="23" [icon]="icon1" [selectedIcon]="icon11">
@@ -38,7 +38,7 @@
     ></div>
   </ng-template>
   <div style="background-color: white; height: 100%; text-align: center">
-    <div style="padding-top: 10px">
+    <div style="padding-top: 0px">
       <router-outlet></router-outlet>
     </div>
   </div>

@@ -12,9 +12,10 @@ import { setChannel, setTitle } from 'src/app/store/reducers.component';
 export class NewsComponent implements OnInit {
   ngOnInit(): void {
     this.state = store.getState();
-    const channel = this.state.channel;
-    this.channel = channel.payload;
-    this.index=channel.payload;
+    this.d = this.state.channel;
+    console.log(store.getState());
+    this.channel = this.d.payload;
+    this.index=this.d.payload;
     console.log('this.channel1');
     console.log(this.channel);
     const item = { index:this.channel }
@@ -31,6 +32,7 @@ export class NewsComponent implements OnInit {
   list!: [];
   length=0;
   state:any;
+  d:any;
   onChange(item: any) {
     console.log("onChange");
     store.dispatch(setChannel(item.index));

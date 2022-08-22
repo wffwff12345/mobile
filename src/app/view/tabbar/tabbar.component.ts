@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { store } from 'src/app/store/store.component';
+import { setIndex } from 'src/app/store/reducers.component';
 @Component({
   selector: 'app-tabbar',
   templateUrl: './tabbar.component.html',
@@ -7,9 +9,13 @@ import { Router } from '@angular/router';
 })
 export class TabbarComponent implements OnInit {
   ngOnInit(): void {
+    this.changeIndex();
   }
-  constructor(private router:Router){
 
+  constructor(private router:Router){
+  /*   store.subscribe(()=>{
+      this.changeIndex();
+    }); */
   }
   hidden: boolean = false;
   fullScreen: boolean = false;
@@ -17,8 +23,13 @@ export class TabbarComponent implements OnInit {
   tintColor: string = 'red';
   unselectedTintColor: string = '#888';
   tabbarStyle: object = { height: '100%' };
-  selectedIndex: number = 0;
-
+  selectedIndex=0;
+  state:any;
+  changeIndex(){
+    this.state=store.getState();
+    const index=this.state.index;
+    this.selectedIndex=index.payload;
+  }
   showTabBar(event:any) {
     event.preventDefault();
     this.hidden = !this.hidden;
@@ -54,13 +65,28 @@ export class TabbarComponent implements OnInit {
   }
 
   tabBarTabOnPress(pressParam: any) {
+    store.dispatch(setIndex(pressParam.index));
     console.log('onPress Params: ', pressParam);
     this.selectedIndex = pressParam.index;
-    if(pressParam.index===0){
-      this.router.navigate(['/tabbar/news']);
-    }
-    else if(pressParam.index===1){
+    if(pressParam.index===1){
       this.router.navigate(['/tabbar/my']);
+    }
+    else{
+      console.log("news")
+      /* if (history.state['result']) {
+        console.log('navigate');
+        this.router.navigate(['/tabbar/news']);
+      }
+      else {
+        console.log("history");
+        history.replaceState({ result: true }, '/tabbar/news')
+      } */
+      // this.router.navigate(['/tabbar/news']);
+      //history.go(-1);
+      setTimeout(()=>{
+        location.replace('/tabbar/news');
+      },)
+
     }
   }
 }
