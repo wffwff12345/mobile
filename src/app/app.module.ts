@@ -34,6 +34,7 @@ import { HistorylistComponent } from './view/history/historylist/historylist.com
 import { HistoryInfoComponent } from './view/history/history-info/history-info.component';
 import { TestComponent } from './view/test/test.component';
 import { EditorComponent } from './view/editor/editor.component';
+
 @NgModule({
   declarations: [
 
@@ -55,6 +56,7 @@ import { EditorComponent } from './view/editor/editor.component';
     HistoryInfoComponent,
     TestComponent,
     EditorComponent,
+
 
   ],
   imports: [
