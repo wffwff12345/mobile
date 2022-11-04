@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { store } from 'src/app/store/store.component';
 import { setIndex } from 'src/app/store/reducers.component';
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-tabbar',
   templateUrl: './tabbar.component.html',
@@ -12,7 +14,7 @@ export class TabbarComponent implements OnInit {
     this.changeIndex();
   }
 
-  constructor(private router:Router){
+  constructor(private router:Router,private route:ActivatedRoute){
   /*   store.subscribe(()=>{
       this.changeIndex();
     }); */
@@ -20,15 +22,22 @@ export class TabbarComponent implements OnInit {
   hidden: boolean = false;
   fullScreen: boolean = false;
   topFlag: boolean = false;
-  tintColor: string = 'red';
+  tintColor: string = '#108ee9';
   unselectedTintColor: string = '#888';
   tabbarStyle: object = { height: '100%' };
-  selectedIndex=0;
+  selectedIndex:any;
   state:any;
   changeIndex(){
     this.state=store.getState();
     const index=this.state.index;
     this.selectedIndex=index.payload;
+    
+   /*  if(!!index.payload){
+    this.selectedIndex=index.payload;
+  }else{
+    this.selectedIndex=index;
+  } */
+  //this.selectedIndex=localStorage.getItem("index");
   }
   showTabBar(event:any) {
     event.preventDefault();
@@ -66,27 +75,12 @@ export class TabbarComponent implements OnInit {
 
   tabBarTabOnPress(pressParam: any) {
     store.dispatch(setIndex(pressParam.index));
+    //localStorage.setItem("index",pressParam.index);
     console.log('onPress Params: ', pressParam);
     this.selectedIndex = pressParam.index;
     if(pressParam.index===1){
-      this.router.navigate(['/tabbar/my']);
-    }
-    else{
-      console.log("news")
-      /* if (history.state['result']) {
-        console.log('navigate');
-        this.router.navigate(['/tabbar/news']);
-      }
-      else {
-        console.log("history");
-        history.replaceState({ result: true }, '/tabbar/news')
-      } */
-      // this.router.navigate(['/tabbar/news']);
-      //history.go(-1);
-      setTimeout(()=>{
-        location.replace('/tabbar/news');
-      },)
-
+      console.log("test");
+      this.router.navigate(['/tabbar/test']);
     }
   }
 }

@@ -1,0 +1,11 @@
+<div class="am-demo-page" style="height: 100%;padding: 300px 0px;">
+    <div style="margin-left: 5px;" (click)="back()"><Icon [type]="'left'" [size]="'xxs'" [color]="'#108ee9'" style="margin-top: 25px"></Icon>
+        <span style="color:rgb(23, 132, 233) ;">返回</span>
+    </div>
+    <div class="am-list">
+        <InputItem [clear]="true" [placeholder]="'请输入账户名'" [focus]="autoFocus" [content]="'账户名'" [(ngModel)]="name"></InputItem>
+        <InputItem [clear]="true" [placeholder]="'请输入密码'" [focus]="inputFocus" [content]="'密码'" [(ngModel)]="password"></InputItem>
+        <InputItem [clear]="true" [placeholder]="'请输入电话号码'" [focus]="inputFocus" [content]="'电话'" [(ngModel)]="phone"></InputItem>
+        <div style="margin-top:50px" Button [type]="'primary'" [disabled]="check()" [size]="'small'" (onClick)="editor()">修改个人信息</div>
+    </div>
+</div>

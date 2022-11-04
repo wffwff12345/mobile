@@ -31,7 +31,14 @@ export class NewInfobychannelComponent implements OnInit {
       console.log(this.contents);
       this.date=res.data.createTime;
       this.authorname=res.data.author;
-    })
+    });
+    console.log("history");
+    const userId=localStorage.getItem("token");
+    const dto={newId:this.id,userId:userId};
+    console.log(dto);
+    this.service.addHistory(dto).subscribe((res:any)=>{
+    console.log(res);
+  });
   }
   back(){
 /*     history.back();
@@ -67,11 +74,19 @@ export class NewInfobychannelComponent implements OnInit {
           this.Toast.fail('评论内容为空,不能提交!',2000);
           return
         }
-        this.isvisible=false;
-        this.Toast.success('感谢您的评论',3000);
-        this.text=null;
-      }
-    }
+        const userId=localStorage.getItem("token");
+        const dto={newId:this.id,userId:userId,comment:this.text};
+        console.log(dto);
+        this.service.comment(dto).subscribe((res:any)=>{
+          console.log(res);
+          if(res.code==1001){
+            this.isvisible=false;
+            this.show=false;
+            this.text==null;
+          }
+
+        })
+    }}
   ];
   dataList = [
     { url: 'OpHiXAcYzmPQHcdlLFrc', title: '发送给朋友' },
@@ -94,6 +109,8 @@ export class NewInfobychannelComponent implements OnInit {
       },
       (buttonIndex, rowIndex) => {
         console.log(buttonIndex);
+        this.Toast.success("已转发");
+
       }
     );
   }

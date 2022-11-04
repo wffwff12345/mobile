@@ -11,9 +11,7 @@ import { NgZorroAntdMobileModule } from 'ng-zorro-antd-mobile';
 import { RouterModule } from '@angular/router';
 import { TabBarModule } from 'ng-zorro-antd-mobile';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
-
-
-
+import { HammerModule } from '@angular/platform-browser';
 
 
 
@@ -23,16 +21,22 @@ import { FirstComponent } from './view/first/first.component';
 import { RegisterComponent } from './view/register/register.component';
 import { TabbarComponent } from './view/tabbar/tabbar.component';
 import { NewsComponent } from './view/news/news.component';
-import { MyComponent } from './view/my/my.component';
 import { NewComponent } from './view/new/new.component';
+import { MyComponent } from './view/my/my.component';
 import { NewInfoComponent } from './view/new-info/new-info.component';
 import { CoverlistComponent } from './view/coverlist/coverlist.component';
 import { ContentlistComponent } from './view/new-info/contentlist/contentlist.component';
 import { ListComponent } from './view/news/list/list.component';
 import { MyInterceptor } from './httpinterceptor/myInterceptor';
 import { NewInfobychannelComponent } from './view/new-infobychannel/new-infobychannel.component';
+import { HistoryComponent } from './view/history/history.component';
+import { HistorylistComponent } from './view/history/historylist/historylist.component';
+import { HistoryInfoComponent } from './view/history/history-info/history-info.component';
+import { TestComponent } from './view/test/test.component';
+import { EditorComponent } from './view/editor/editor.component';
 @NgModule({
   declarations: [
+
     AppComponent,
     LoginComponent,
     FirstComponent,
@@ -46,7 +50,12 @@ import { NewInfobychannelComponent } from './view/new-infobychannel/new-infobych
     ContentlistComponent,
     ListComponent,
     NewInfobychannelComponent,
-    
+    HistoryComponent,
+    HistorylistComponent,
+    HistoryInfoComponent,
+    TestComponent,
+    EditorComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -60,7 +69,9 @@ import { NewInfobychannelComponent } from './view/new-infobychannel/new-infobych
     FormsModule,
     HttpClientModule,
     RouterModule,
-    TabBarModule
+    TabBarModule,
+    HammerModule,
+
   ],
   providers: [
     {

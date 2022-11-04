@@ -5,7 +5,7 @@ import storage from 'redux-persist/lib/storage'
 const persistConfig={
   key:'root',
   storage,
-  whitelist:['token','title','channel','name','index'],
+  whitelist:['title','channel','name','index','image'],
 }
 const myreducer=persistReducer(persistConfig,counterSlice.reducer);
 const store = configureStore({

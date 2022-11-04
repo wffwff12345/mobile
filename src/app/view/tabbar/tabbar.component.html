@@ -9,37 +9,52 @@
 [activeTab]="selectedIndex"
 (onPress)="tabBarTabOnPress($event)"
 >
-<TabBarItem [title]="'news'" [key]="'1'" [badge]="23" [icon]="icon1" [selectedIcon]="icon11">
+<TabBarItem [title]="'新闻'" [key]="'1'"  [icon]="icon1" [selectedIcon]="icon11" >
   <ng-template #icon1>
-    <div
-      style="width:22px;height: 22px;background: url('https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg') center center / 21px 21px no-repeat;"
-    ></div>
+    <div style="width:22px;height: 22px;background: url('https://wffyy.oss-cn-huhehaote.aliyuncs.com/97af5363-8b53-407d-aeb9-17c17dc2fdff.png') center center / 21px 21px no-repeat;">
+    </div>
   </ng-template>
   <ng-template #icon11>
     <div
-      style="width:22px;height: 22px;background: url('https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg') center center / 21px 21px no-repeat;"
+      style="width:22px;height: 22px;background: url('https://wffyy.oss-cn-huhehaote.aliyuncs.com/ba1c7112-415e-4aec-8ff4-64b5bbefbcaa.png') center center / 21px 21px no-repeat;"
     ></div>
   </ng-template>
   <div style="background-color: white; height: 100%; text-align: center">
-    <div  style="padding-top: 10px">
+    <div  style="padding-top: 10px;">
+      <!-- <router-outlet></router-outlet> -->
+      <app-news></app-news>
+    </div>
+  </div>
+</TabBarItem>
+<TabBarItem [title]="'测试'" [key]="'2'"  [icon]="icon1" [selectedIcon]="icon11" >
+  <ng-template #icon1>
+    <div style="width:22px;height: 22px;background: url('https://wffyy.oss-cn-huhehaote.aliyuncs.com/97af5363-8b53-407d-aeb9-17c17dc2fdff.png') center center / 21px 21px no-repeat;">
+    </div>
+  </ng-template>
+  <ng-template #icon11>
+    <div
+      style="width:22px;height: 22px;background: url('https://wffyy.oss-cn-huhehaote.aliyuncs.com/ba1c7112-415e-4aec-8ff4-64b5bbefbcaa.png') center center / 21px 21px no-repeat;"
+    ></div>
+  </ng-template>
+  <div style="background-color: white; height: 100%; text-align: center">
+    <div  style="padding-top: 10px;background-color: red;">
       <router-outlet></router-outlet>
     </div>
   </div>
 </TabBarItem>
-<TabBarItem [title]="'My'" [key]="'2'" [badge]="2" [icon]="icon4" [selectedIcon]="icon44">
+<TabBarItem [title]="'我的'" [key]="'3'"  [icon]="icon4" [selectedIcon]="icon44">
   <ng-template #icon4>
-    <div
-      style="width:22px;height: 22px;background: url('https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg') center center / 21px 21px no-repeat;"
-    ></div>
+    <div style="width:22px;height: 22px;background: url('https://wffyy.oss-cn-huhehaote.aliyuncs.com/adb47448-98fb-46de-801e-5e04fc511944.png') center center / 21px 21px no-repeat;">
+    </div>
   </ng-template>
   <ng-template #icon44>
     <div
-      style="width:22px;height: 22px;background: url('https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg') center center / 21px 21px no-repeat;"
+      style="width:22px;height: 22px;background: url('https://wffyy.oss-cn-huhehaote.aliyuncs.com/8a2794ca-b505-44dd-8195-67f90c8eb5c3.png') center center / 21px 21px no-repeat;"
     ></div>
   </ng-template>
   <div style="background-color: white; height: 100%; text-align: center">
     <div style="padding-top: 0px">
-      <router-outlet></router-outlet>
+      <app-my></app-my>
     </div>
   </div>
 </TabBarItem>

@@ -20,11 +20,11 @@ export class MyInterceptor implements HttpInterceptor{
         //     });
         //     return next.handle(uploadreq);
         // }
-        this.state = store.getState();
-        const token = this.state.token;
+        // this.state = store.getState();
+        const token = localStorage.getItem("token");
         const myreq = req.clone(
             {
-                headers: req.headers.set('token', `${token.payload}`)
+                headers: req.headers.set('token', `${token}`)
             }
         );
         return next.handle(myreq);

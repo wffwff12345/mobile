@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2,ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { NewsService } from './news.service';
 import { store } from 'src/app/store/store.component';
@@ -11,6 +11,7 @@ import { setChannel, setTitle } from 'src/app/store/reducers.component';
 })
 export class NewsComponent implements OnInit {
   ngOnInit(): void {
+    console.log("ngOnInit")
     this.state = store.getState();
     this.d = this.state.channel;
     console.log(store.getState());
@@ -22,7 +23,9 @@ export class NewsComponent implements OnInit {
     this.loadding(item);
   }
 
-  constructor(private router: Router, private service: NewsService) { }
+  constructor(private router: Router, private service: NewsService,private ref:ChangeDetectorRef) { 
+
+  }
   search() {
     this.router.navigate(['/newlist']);
   }
@@ -72,6 +75,8 @@ export class NewsComponent implements OnInit {
       console.log(this.list.length);
       this.length = this.list.length;
       console.log(this.length);
+     /*  this.ref.markForCheck();
+      this.ref.detectChanges(); */
     })
   }
 

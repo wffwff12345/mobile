@@ -1,0 +1,16 @@
+<Navbar [leftContent]="'返回'" (onLeftClick)="back()" style="opacity:0.5">
+  浏览记录
+</Navbar>
+<div style="text-align:center;padding-top: 6px;border-bottom: 0.5px solid #b4b4b4;">
+  <a (click)="deleteAll()" style="margin-left:270px;">
+    <img src="https://wffyy.oss-cn-huhehaote.aliyuncs.com/f74daa79-01f4-481d-a11c-2d18e729fe6b.png" alt="" width="20px"
+      height="20px">
+  </a>
+</div>
+<div *ngFor="let item of history;let i=index"  style="padding-top:5px" class="delete"  >
+  <a (click)="deleteOne(item.id)" >
+    <img src="https://wffyy.oss-cn-huhehaote.aliyuncs.com/f74daa79-01f4-481d-a11c-2d18e729fe6b.png" alt="" width="20px"
+      height="20px">
+  </a>
+  <app-historylist [id]="item.newId"></app-historylist>
+</div>

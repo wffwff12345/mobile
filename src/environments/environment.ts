@@ -3,9 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  SERVER_URL: `http://10.1.11.44:9002/`,
+  CLIENT_URL: `http://10.1.11.44:4202/`,
+  production: false,
+  useHash: false,
+  hmr: false,
 };
-
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

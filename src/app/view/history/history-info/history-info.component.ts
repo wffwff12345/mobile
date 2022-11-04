@@ -1,0 +1,118 @@
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { NewsService } from './news.service';
+import { Router } from '@angular/router';
+import { store } from 'src/app/store/store.component';
+import { ThisReceiver } from '@angular/compiler';
+import { ActionSheetService, ToastService } from 'ng-zorro-antd-mobile';
+import { en_US, ru_RU, zh_CN, sv_SE, da_DK } from 'ng-zorro-antd-mobile';
+@Component({
+  selector: 'app-history-info',
+  templateUrl: './history-info.component.html',
+  styleUrls: ['./history-info.component.css']
+})
+export class HistoryInfoComponent implements OnInit {
+  constructor(private route:ActivatedRoute,private service:NewsService,private Toast:ToastService,private router:Router,public changeDetectorRef:ChangeDetectorRef,private _actionSheet: ActionSheetService, private _toast: ToastService) { 
+  }
+  id=this.route.snapshot.params['id'];
+  title:string|null=null;
+  contents:content[]=[];
+  date:any;
+  authorname:any;
+  text:string|null=null;
+  icon_name='#icon-aixin';
+  state:any;
+  isvisible=false;
+  show=false;
+  ngOnInit(): void {
+    this.service.get(this.id).subscribe((res:any)=>{
+      this.title=res.data.title;
+      this.contents=JSON.parse(res.data.content);
+      console.log(this.contents);
+      this.date=res.data.createTime;
+      this.authorname=res.data.author;
+    });
+    console.log("history");
+    const userId=localStorage.getItem("token");
+    const dto={newId:this.id,userId:userId};
+    console.log(dto);
+    this.service.addHistory(dto).subscribe((res:any)=>{
+      console.log(res);
+    })
+  }
+  back(){
+/*     history.back();
+ */    
+    
+    const token=localStorage.getItem("token");
+    this.router.navigate(['/history'])
+ }
+  showModal(){
+    this.isvisible=true;
+    this.show=true;
+  }
+  close(){
+    console.log(this.text);
+    this.text=null;
+    this.isvisible=false;
+    setTimeout(()=>{
+      this.show=false;
+    },200);
+   
+  }
+  footer = [
+    {
+      text: '评论',
+      onPress: () => {
+        console.log('评论');
+        console.log(this.text);
+        if(this.text==null){
+          this.Toast.fail('评论内容为空,不能发送评论!',2000);
+          return
+        }
+        const userId=localStorage.getItem("token");
+        const dto={newId:this.id,userId:userId,comment:this.text};
+        console.log(dto);
+        this.service.comment(dto).subscribe((res:any)=>{
+          console.log(res);
+          if(res.code==1001){
+            this.isvisible=false;
+            this.show=false;
+            this.text==null;
+          }
+        })
+        /* this.isvisible=false;
+        this.Toast.success('感谢您的评论',3000);
+        this.text=null; */
+      }
+    }
+  ];
+  dataList = [
+    { url: 'OpHiXAcYzmPQHcdlLFrc', title: '发送给朋友' },
+    { url: 'wvEzCMiDZjthhAOcwTOu', title: '新浪微博' },
+    { url: 'cTTayShKtEIdQVEMuiWt', title: '生活圈' },
+    { url: 'umnHwvEgSyQtXlZjNJTt', title: '微信好友' },
+    { url: 'SxpunpETIwdxNjcJamwB', title: 'QQ' }
+  ].map(obj => ({
+    icon: `<img src="https://gw.alipayobjects.com/zos/rmsportal/${obj.url}.png" style="width:36px"/>`,
+    title: obj.title
+  }));
+
+  showShareActionSheetMulpitleLine = () => {
+    const data = [[...this.dataList], [this.dataList[3], this.dataList[4]]];
+    this._actionSheet.showShareActionSheetWithOptions(
+      {
+        options: data,
+        message: '请选择转发方式',
+      },
+      (buttonIndex, rowIndex) => {
+        console.log(buttonIndex);
+        this.Toast.success("已转发");
+      }
+    );
+  }
+}
+  interface content{
+    type:string;
+    content:string;
+  }

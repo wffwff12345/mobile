@@ -10,4 +10,12 @@ export class NewsService {
     const url=`/app/news/getnew/${id}`;    
     return this.http.get(url);
   }
+  addHistory(dto:any){
+    const url="/app/new/history";    
+    return this.http.post(url,dto);
+  }
+  comment(dto:any){
+    const url='/app/new/comment';
+    return this.http.post(url,dto);
+  }
 }

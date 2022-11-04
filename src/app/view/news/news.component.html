@@ -1,57 +1,57 @@
 <div style="height: 100%;padding: 0px;">
-<div Button [type]="'primary'" style="background-color:#108ee9 ;" [size]="'small'" (onClick)="search()">搜索<nzm-icon [type]="'search'" [size]="'xs'"></nzm-icon></div>
-<Tabs [page]="6" [useOnPan]="true" [swipeable]="true" [activeTab]="index" [tabBarActiveTextColor]="'#1890ff'"
-  (onChange)="onChange($event)" (onTabClick)="onTabClick($event)">
-  <TabPane [title]="titleTemplate">
-    <ng-template #titleTemplate>
-      <Badge>
-        <div>首页</div>
-      </Badge>
-    </ng-template>
-    <app-list [list]="list"></app-list>
-  </TabPane>
-  <TabPane [title]="titleTemplate1">
-    <ng-template #titleTemplate1>
-      <Badge>
-        <div>体育</div>
-      </Badge>
-    </ng-template>
-    <app-list [list]="list"></app-list>
-  </TabPane>
-  <TabPane [title]="titleTemplate2">
-    <ng-template #titleTemplate2>
-      <Badge>
-        <div>时政</div>
-      </Badge>
-    </ng-template>
-    <span *ngIf="length==0">暂时没有数据,请稍等</span>
-    <app-list *ngIf="length!=0"  [list]="list"></app-list>
-  </TabPane>
-  <TabPane [title]="titleTemplate3">
-    <ng-template #titleTemplate3>
-      <Badge>
-        <div>美食</div>
-      </Badge>
-    </ng-template>
-    <app-list [list]="list"></app-list>
-  </TabPane>
-  <TabPane [title]="titleTemplate4">
-    <ng-template #titleTemplate4>
-      <Badge>
-        <div>交通</div>
-      </Badge>
-    </ng-template>
-    <app-list [list]="list"></app-list>
-  </TabPane>
-  <TabPane [title]="titleTemplate5">
-    <ng-template #titleTemplate5>
-      <Badge>
-        <div>教育</div>
-      </Badge>
-    </ng-template>
-    <app-list [list]="list"></app-list>
-  </TabPane>
-</Tabs>
-
-<!-- <app-new *ngIf="able==true" [list]="list"></app-new> -->
-</div>
+  <div Button [type]="'primary'" style="background-color:#108ee9 ;" [size]="'small'" (onClick)="search()">搜索<nzm-icon [type]="'search'" [size]="'xs'"></nzm-icon></div>
+  <Tabs [page]="6" [useOnPan]="true" [swipeable]="true" [activeTab]="index" [tabBarActiveTextColor]="'#1890ff'"
+    (onChange)="onChange($event)" (onTabClick)="onTabClick($event)">
+    <TabPane [title]="titleTemplate">
+      <ng-template #titleTemplate>
+        <Badge>
+          <div>首页</div>
+        </Badge>
+      </ng-template>
+      <app-list [list]="list"></app-list>
+    </TabPane>
+    <TabPane [title]="titleTemplate1">
+      <ng-template #titleTemplate1>
+        <Badge>
+          <div>体育</div>
+        </Badge>
+      </ng-template>
+      <app-list [list]="list"></app-list>
+    </TabPane>
+    <TabPane [title]="titleTemplate2">
+      <ng-template #titleTemplate2>
+        <Badge>
+          <div>时政</div>
+        </Badge>
+      </ng-template>
+      <span *ngIf="length==0">暂时没有数据,请稍等</span>
+      <app-list *ngIf="length!=0"  [list]="list"></app-list>
+    </TabPane>
+    <TabPane [title]="titleTemplate3">
+      <ng-template #titleTemplate3>
+        <Badge>
+          <div>美食</div>
+        </Badge>
+      </ng-template>
+      <app-list [list]="list"></app-list>
+    </TabPane>
+    <TabPane [title]="titleTemplate4">
+      <ng-template #titleTemplate4>
+        <Badge>
+          <div>交通</div>
+        </Badge>
+      </ng-template>
+      <app-list [list]="list"></app-list>
+    </TabPane>
+    <TabPane [title]="titleTemplate5">
+      <ng-template #titleTemplate5>
+        <Badge>
+          <div>教育</div>
+        </Badge>
+      </ng-template>
+      <app-list [list]="list"></app-list>
+    </TabPane>
+  </Tabs>
+  
+  <!-- <app-new *ngIf="able==true" [list]="list"></app-new> -->
+  </div>

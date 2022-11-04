@@ -1,0 +1,22 @@
+<a (click)="content(id)" (press)="press()"  style="margin-top: 5px;border-bottom: 0.5px solid #b4b4b4;padding-left: 5px;display: flex;"
+    style="margin-top: 5px;border-bottom: 0.5px solid #b4b4b4;padding-left: 5px;display: flex;">
+    <div>
+        <div style="font-size: 16px;color:#3a3a3a;margin-bottom: 10px;text-align: left;text-indent:12px;">
+            {{title}}
+        </div>
+        <div>
+            <div *ngIf="type===3">
+                <app-coverlist *ngIf="type===3" [list]="cover"></app-coverlist>
+            </div>
+            <div style="margin-bottom: 10px;color: #b4b4b4;font-size: 11px;text-align:left;">
+                作者：<span style="margin-right:12px">{{author}}</span>
+                发布时间：<span style="margin-right:12px">{{createTime|date :'yyyy-MM-dd'}}</span>
+            </div>
+        </div>
+    </div>
+    <img *ngIf="type===1" src={{cover}} alt="" style="margin-bottom: 10px;margin-left: 50px;" width="116px"
+        height="73px" fit="cover">
+</a>
+<button >
+    
+</button>

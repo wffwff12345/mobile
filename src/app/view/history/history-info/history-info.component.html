@@ -1,0 +1,56 @@
+<div class="content-wraper">
+    <Navbar [leftContent]="'返回'" (onLeftClick)="back()" style="opacity:0.5">
+        新闻详情
+    </Navbar>
+    <div class="content" style="height: auto;padding:0px 5px;margin-bottom: 10px;min-height: 650px;">
+        <div style="text-align: center;margin-top: 15px;">
+            <h1 class="title">{{title}}</h1>
+        </div>
+        <div style="display:flex ;margin: 20px 0px;">
+            <div>
+                <div class="name">作者：{{authorname}}</div>
+                <div class="date">时间：{{date|date :'yyyy-MM-dd '}}</div>
+            </div>
+            <div class="focus">
+                <nzm-button [type]="'primary'"
+                    style="width: 80px;height:47px;margin:0px 0px 0px 170px ;border-radius: 30px;border: 0px;padding-top: 0px;text-align: center;vertical-align: middle;">
+                    <span style="font-size:16px ;">关注</span>
+                </nzm-button>
+            </div>
+        </div>
+
+        <div *ngFor="let item of contents;let i=index">
+            <app-contentlist [item]="item"></app-contentlist>
+        </div>
+    </div>
+    <div class="comment">
+        <div class="post" style="width:100%;display: flex;">
+            <div Button [type]="'primary'"
+                style="width: 60%;height:47px;margin: 20px 0px 20px;border-radius: 40px;border: 0px;opacity: 0.4;"
+                (onClick)="showModal()">
+                <span>评论</span>
+            </div>
+            <div Button [type]="'primary'"
+                style="width: 30%;height:47px;margin: 20px 0px 20px 20px;border-radius: 40px;border: 0px;opacity: 0.4;"
+                (onClick)="showShareActionSheetMulpitleLine()">转发</div>
+        </div>
+    </div>
+    <ng-template #message>
+        <div class="am-action-sheet-message">123</div>
+    </ng-template>
+    <Modal  [(ngModel)]="isvisible"   [closable]="true" (onClose)="close()" [transparent]="true" [title]="'善言结善缘,恶言伤人心'"
+        [footer]="footer">
+        <div  [ngStyle]="{ height: 100, overflow: 'scroll' }">
+            <div  class="am-list" style="margin:0;">
+                <div class="am-list-body">
+                    <TextareaItem *ngIf="show"  [clear]="true" [(ngModel)]="text"  [rows]="5" [count]="100" placeholder="请留言...">
+                    </TextareaItem>
+                </div>
+            </div>
+        </div>
+    </Modal>
+    </div>
+
+<!-- <svg class="icon" aria-hidden="true">
+    <use [attr.xlink:href]="icon_name"></use>
+</svg> -->

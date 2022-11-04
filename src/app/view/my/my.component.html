@@ -1,7 +1,47 @@
 <div style="height: 100%;padding: 0px;">
-    <div  style="background-color:#0890eb ;height: 100px;padding-left: 10px;" >
-            <span style="font-size: 14px;color:white">{{name}}</span>
-            <div class="background"></div>
+    <div style="background-color:#0890eb ;height: 150px;padding-top: 10px;">
+        <span style="font-size: 14px;color:white">我的</span>
+        <div style="display: flex;">
+            <div style="height:50px;line-height: 50px;margin-right:170px;margin-left: 10px;display: flex;">
+                <a (click)="image()">
+                    <img src={{img}} alt="" width="50px"  >
+                </a>
+                <Modal [(ngModel)]="imageShow" [transparent]="true" [title]="'请设置头像'" [footer]="footer">
+                    <div class="image">
+                        <ImagePicker [files]="files" [multiple]="multipleTab === 1" [selectable]="files.length <1"
+                            (onChange)="fileChange($event)" (onImageClick)="imageClick($event)"></ImagePicker>
+                        <!-- <input type="file" (change)="upload($event)"> -->
+                    </div>
+                </Modal>
+                <div
+                    style="font-size: 14px;color:white;text-align: center;height: 50px;line-height: 50px;display:inline-block;margin-left: 10px;">
+                    {{name}}</div>
+            </div>
+            <div style="display: flex;height:50px;line-height: 50px;">
+                <div>
+                    <a (click)="editor()">
+                        编辑
+                    </a>
+                </div>
+                <!--  <div Button [type]="'primary'" style="width: 50px;height:47px;border: 0px;margin-left: 20px;"><span
+                                style="font-size: 15px;">退出</span></div> -->
+                <div style="margin-left:30px;text-align:center;padding-top: 6px;">
+                    <a (click)="logout()">
+                        <img src="https://wffyy.oss-cn-huhehaote.aliyuncs.com/ba4bb67f-b15b-48dc-9044-d1ae10f39a81.png"
+                            alt="" width="20px" height="20px">
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-
+    <div>
+        <List [className]="'my-list'">
+            <a (click)="history()">
+                <ListItem>历史记录</ListItem>
+            </a>
+            <ListItem>客服中心</ListItem>
+            <ListItem>帮助</ListItem>
+            <ListItem>设置</ListItem>
+        </List>
+    </div>
 </div>
