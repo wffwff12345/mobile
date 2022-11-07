@@ -42,6 +42,7 @@ export class HistoryComponent implements OnInit {
       console.log(res);
       this.history = res.data;
     });
+    console.log(this.userId)
   }
   deleteAll() {
     this.Model.alert('删除所有历史记录', '', [
@@ -69,7 +70,7 @@ export class HistoryComponent implements OnInit {
       },
     ]);
   }
-  deleteOne(id: number) {
+  /* deleteOne(id: number) {
     console.log(id);
     const dto = { newId: id, userId: Number(this.userId) };
     console.log(dto);
@@ -80,7 +81,7 @@ export class HistoryComponent implements OnInit {
         this.history = res.data;
       });
     });
-  }
+  } */
   back() {
     this.router.navigate(['/tabbar/my']);
   }
@@ -91,7 +92,8 @@ export class HistoryComponent implements OnInit {
   click(event :any){
     console.log('click')
   }
-  deleteTest(event:any){
+  deleteOne(event:any){
     console.log(event)
+    this.history = event;
   }
 }

@@ -7,10 +7,9 @@
       height="20px">
   </a>
 </div>
-<div appPushDelete (delete)="deleteTest($event)" *ngFor="let item of history;let i=index" style="padding-top:5px" class="delete">
-    <a (click)="deleteOne(item.id)">
-      <img src="https://wffyy.oss-cn-huhehaote.aliyuncs.com/f74daa79-01f4-481d-a11c-2d18e729fe6b.png" alt=""
-        width="20px" height="20px">
-    </a>
-    <app-historylist [id]="item.newId"></app-historylist>
+<div appPushDelete [id]="item.newId" [userId]="userId" (delete)="deleteOne($event)"
+  *ngFor="let item of history;let i=index" >
+  <img src="https://wffyy.oss-cn-huhehaote.aliyuncs.com/f74daa79-01f4-481d-a11c-2d18e729fe6b.png" alt="" width="20px"
+    height="20px">
+  <app-historylist [id]="item.newId"></app-historylist>
 </div>
