@@ -13,6 +13,7 @@ import { TabBarModule } from 'ng-zorro-antd-mobile';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HammerModule } from '@angular/platform-browser';
 
+import { PushDeleteModule } from './view/history/touch/push-delete.module';
 
 
 import { AppComponent } from './app.component';
@@ -34,7 +35,6 @@ import { HistorylistComponent } from './view/history/historylist/historylist.com
 import { HistoryInfoComponent } from './view/history/history-info/history-info.component';
 import { TestComponent } from './view/test/test.component';
 import { EditorComponent } from './view/editor/editor.component';
-
 @NgModule({
   declarations: [
 
@@ -57,7 +57,6 @@ import { EditorComponent } from './view/editor/editor.component';
     TestComponent,
     EditorComponent,
 
-
   ],
   imports: [
     BrowserModule,
@@ -73,7 +72,7 @@ import { EditorComponent } from './view/editor/editor.component';
     RouterModule,
     TabBarModule,
     HammerModule,
-
+    PushDeleteModule,
   ],
   providers: [
     {

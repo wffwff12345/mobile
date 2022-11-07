@@ -33,6 +33,8 @@ export class HistoryComponent implements OnInit {
     console.log('按压测试');
   })
   history: any;
+  test=[1,2,3,4,5,6];
+  testState=true
   idlist: any;
   userId = localStorage.getItem('token');
   ngOnInit(): void {
@@ -83,7 +85,13 @@ export class HistoryComponent implements OnInit {
     this.router.navigate(['/tabbar/my']);
   }
   press(event: any) {
-
+    console.log(event.type)
+    console.log('press');
   }
-
+  click(event :any){
+    console.log('click')
+  }
+  deleteTest(event:any){
+    console.log(event)
+  }
 }
